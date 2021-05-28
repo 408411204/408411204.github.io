@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <p>
+      樹高為 :<input id="tree" type="text" /> <button id="TREE">印出</button
+      ><br />
+    </p>
+    <p id="list"></p>
+    <script type="text/javascript">
+      document.getElementById('TREE').onclick = function PrintTree() {
+        var tree = document.getElementById('tree').value;
+        let leaf = 1;
+        //印出樹高
+        var treeheight = document.createTextNode('tree(');
+        var print_out = document.createElement('p');
+        print_out.appendChild(treeheight);
+        var treeheight = document.createTextNode(tree);
+        print_out.appendChild(treeheight);
+        var treeheight = document.createTextNode(')');
+        print_out.appendChild(treeheight);
+        var linebreak = document.createElement('br');
+        print_out.appendChild(linebreak);
+        //印出樹葉
+        for (let i = 0; i < tree; i++) {
+          for (let l = 1; l + i < tree; l++) {
+            var space = document.createTextNode('\u00A0\u00A0');
+            print_out.appendChild(space);
+          }
+          for (let l = 0; l < leaf; l++) {
+            var star = document.createTextNode('*');
+            print_out.appendChild(star);
+          }
+          leaf += 2;
+          var linebreak = document.createElement('br');
+          print_out.appendChild(linebreak);
+        }
+        //印出樹根
+        for (let i = 0; i < tree; i++) {
+          for (let l = 1; l < tree; l++) {
+            var space = document.createTextNode('\u00A0\u00A0');
+            print_out.appendChild(space);
+          }
+          var star = document.createTextNode('*');
+          print_out.appendChild(star);
+          var linebreak = document.createElement('br');
+          print_out.appendChild(linebreak);
+        }
+        var list = document.getElementById('list');
+        list.appendChild(print_out);
+      };
+    </script>
+  </body>
+</html>
